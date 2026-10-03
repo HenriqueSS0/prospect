@@ -4,7 +4,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { ExternalLink, FileDown, Flame, MessagesSquare, RefreshCw } from "lucide-react"
+import { ExternalLink, FileDown, Flame, MessagesSquare, RefreshCw, MapPin } from "lucide-react"
 import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
@@ -62,6 +62,17 @@ export function LeadDetailModal({ lead, onClose }: LeadDetailModalProps) {
               >
                 <ExternalLink className="size-3" />
                 Ver site atual
+              </a>
+            )}
+            {lead.place_id && (
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=Google&query_place_id=${lead.place_id}`}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 text-xs text-muted-foreground underline-offset-2 hover:text-foreground hover:underline"
+              >
+                <MapPin className="size-3" />
+                Ver no Maps
               </a>
             )}
             {lead.instagram_url && (

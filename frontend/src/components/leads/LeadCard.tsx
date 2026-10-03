@@ -1,4 +1,4 @@
-import { Archive, Flame, Star } from "lucide-react"
+import { Archive, Flame, Star, MapPin } from "lucide-react"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -79,6 +79,19 @@ export function LeadCard({
           siteStatus={lead.site_status}
           siteProblemas={lead.site_problemas}
         />
+        {lead.place_id && (
+          <a
+            href={`https://www.google.com/maps/search/?api=1&query=Google&query_place_id=${lead.place_id}`}
+            target="_blank"
+            rel="noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            title="Abrir no Google Maps"
+            className="inline-flex items-center text-muted-foreground hover:text-foreground"
+            aria-label="Abrir no Google Maps"
+          >
+            <MapPin className="size-3.5" />
+          </a>
+        )}
         {lead.instagram_url && (
           <a
             href={lead.instagram_url}

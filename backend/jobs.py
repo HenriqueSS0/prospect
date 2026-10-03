@@ -322,7 +322,7 @@ def _executar_scraper(arquivo_bruto, ambiente, flags_extras=()):
         str(caminho_recurso("google-maps-scraper.exe")),
         "-input", str(DIR_DADOS / "queries.txt"),
         "-results", str(arquivo_bruto),
-        "-lang", "pt",
+        "-lang", "pt-BR",
         "-depth", "5",
         "-exit-on-inactivity", "3m",
         *flags_extras,
@@ -449,6 +449,7 @@ def _capturar_dados_brutos(arquivo_bruto, ambiente, area=None):
     flags_geo = ()
     if area:
         flags_geo = (
+            "-fast-mode",
             "-geo", f"{area['lat']},{area['lng']}",
             "-radius", str(area["raio_m"]),
             "-zoom", str(zoom_para_raio(area["raio_m"])),
